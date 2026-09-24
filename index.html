@@ -630,8 +630,9 @@ function setupForm() {
       el.classList.remove('error'); if(er) er.textContent='';
       if (!el.value.trim() || (test && !test(el.value))) { el.classList.add('error'); if(er) er.textContent=msg; ok=false; }
     }
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     chk('fname','fnameErr','Ingresa tu nombre.');
-    chk('femail','femailErr','Ingresa un email válido.', v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+    chk('femail','femailErr','Ingresa un email válido.', v => emailRe.test(v));
     chk('fsubject','fsubjectErr','Selecciona un asunto.');
     chk('fmsg','fmsgErr','Escribe tu mensaje.');
     if (!ok) return;
